@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<settings
+	xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.1.0 http://maven.apache.org/xsd/settings-1.1.0.xsd"
+	xmlns="http://maven.apache.org/SETTINGS/1.1.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+
+	<profiles>
+		<profile>
+			<id>develop</id>
+			<properties>
+				<logging.config.file>src/main/resources/logback.xml</logging.config.file>
+				<logging.config.level>INFO</logging.config.level>
+				<spring.data.mongodb.uri><![CDATA[
+mongodb://user:password@cluster0-shard-00-00.l7ump.mongodb.net:27017,cluster0-shard-00-01.l7ump.mongodb.net:27017,cluster0-shard-00-02.l7ump.mongodb.net:27017/ingresos?retryWrites=true&ssl=true
+]]></spring.data.mongodb.uri>
+			</properties>
+		</profile>
+		<profile>
+			<id>test</id>
+			<properties>
+				<logging.config.file>/opt/configuration/logback.xml</logging.config.file>
+				<logging.config.level>INFO</logging.config.level>
+				<spring.data.mongodb.uri><![CDATA[
+mongodb://user:password@mongo00-service:27017,mongo01-service:27017,mongo02-service:27017/ingresos?retryWrites=true&ssl=true
+]]></spring.data.mongodb.uri>
+			</properties>
+		</profile>
+
+		<profile>
+			<id>production</id>
+			<properties>
+				<logging.config.file>/opt/configuration/logback.xml</logging.config.file>
+				<logging.config.level>INFO</logging.config.level>
+				<spring.data.mongodb.uri><![CDATA[
+mongodb://user:password@mongo00-service:27017,mongo01-service:27017,mongo02-service:27017/ingresos?retryWrites=true&ssl=true
+]]></spring.data.mongodb.uri>
+			</properties>
+		</profile>
+	</profiles>
+
+	<activeProfiles>
+		<activeProfile>develop</activeProfile>
+	</activeProfiles>
+</settings>

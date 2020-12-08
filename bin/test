@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+if [ "$#" -gt 1 ]; then
+  echo "Illegal number of parameters"
+  exit 0
+fi
+
+if [ "$#" -eq 1 ]; then
+  mvn --settings settings.xml -Pdevelop -Dtest=$1 test
+else
+  mvn --settings settings.xml -Pdevelop test
+fi

@@ -1,0 +1,21 @@
+server:
+   port: 8081
+
+spring:
+   data:
+      mongodb:
+         uri: '@spring.data.mongodb.uri@'
+#         uri: "mongodb+srv://user:password@cluster0.ene0i.mongodb.net/ingresos?retryWrites=true&w=majority"
+
+application:
+   name: '@project.artifactId@'
+   version: '@project.version@'
+   timezone: America/Mexico_City
+   tests:
+      enabled: true
+
+logging:
+   level:
+      root: '@logging.config.level@'
+      org.springframework: WARN
+

@@ -1,0 +1,6 @@
+mvn --settings settings.xml -Pproduction clean package 
+mvn --settings settings.xml -Pproduction fabric8:build
+mvn --settings settings.xml -Pproduction fabric8:resource
+mvn --settings settings.xml -Pproduction fabric8:deploy
+#mvn --settings settings.xml -Pproduction fabric8:watch
+

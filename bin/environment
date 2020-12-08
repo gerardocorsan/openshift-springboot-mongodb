@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+echo "Adding variables to environment ..."
+export currentPath="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+
+export SERVICE_MINIMUM_MEMORY=128m
+export SERVICE_MAXIMUM_MEMORY=256m
+#export SERVICE_STARTER=mx.interware.gden.some.SomeApplication
+
+source $currentPath/get-info
+
+serviceEnvironmentList=$(env |grep SERVICE_) 
+printf '%s\n' "${serviceEnvironmentList[@]}"

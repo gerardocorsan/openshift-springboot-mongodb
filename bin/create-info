@@ -1,0 +1,27 @@
+#!/usr/bin/env bash
+
+createInfoFiles() {
+  if [ -z "$1" ]
+  then
+    DOCKER_REGISTRY=""
+  else
+    DOCKER_REGISTRY="$1/"
+  fi
+    
+  local binPath="$(cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+  local basePath=$(dirname $binPath)
+  local projectFile="$basePath/pom.xml"
+  local txt=$(cat $projectFile)
+  local SING_SERVICE_VERSION=$(grep -oPm1 "(?<=<version>)[^<]+" <<< "$txt")
+  local SING_SERVICE_NAME=$(grep -oPm1 "(?<=<artifactId>)[^<]+" <<< "$txt")
+
+  echo "$SING_SERVICE_VERSION" > $basePath/VERSION
+  echo "$SING_SERVICE_NAME" > $basePath/NAME
+
+
+  echo "Project file    : $projectFile"
+  echo "Service name    : $SING_SERVICE_NAME"
+  echo "Service version : $SING_SERVICE_VERSION"
+}
+
+createInfoFiles $1
